@@ -16,7 +16,6 @@ parts =
 $ touch setup.py
 $ curl -O http://svn.zope.org/*checkout*/zc.buildout/trunk/bootstrap/bootstrap.py
 $ git init
-$ git add bootstrap.py buildout.cfg setup.py LICENSE README src
 $ cat - > .gitignore
 *.pyc
 *.pyo
