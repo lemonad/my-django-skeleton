@@ -1,0 +1,37 @@
+A skeleton setup for starting a django project with virtualenv and buildout.
+
+Approximate steps to reproduce this repository:
+
+$ virtualenv2.6 --no-site-packages my-django-skeleton
+$ cd my-django-skeleton
+$ source ./bin/activate
+$ mkdir -p src/skeleton
+$ touch LICENSE (or create it from http://www.opensource.org/licenses/bsd-license.php)
+$ touch README
+$ touch src/skeleton/__init__.py
+$ cat - > buildout.cfg
+[buildout]
+parts =
+^D
+$ touch setup.py
+$ curl -O http://svn.zope.org/*checkout*/zc.buildout/trunk/bootstrap/bootstrap.py
+$ git init
+$ git add bootstrap.py buildout.cfg setup.py LICENSE README src
+$ cat - > .gitignore
+*.pyc
+*.pyo
+.installed.cfg
+.Python
+bin
+develop-eggs
+dist
+downloads
+eggs
+include
+lib
+parts
+src/*.egg-info
+^D
+$ python bootstrap.py
+
+[Based on http://jacobian.org/writing/django-apps-with-buildout/]
