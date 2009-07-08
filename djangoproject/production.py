@@ -1,0 +1,2 @@
+
+from djangoproject.settings import *

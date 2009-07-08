@@ -8,7 +8,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'    # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'exampleproject.db'
+DATABASE_NAME = 'djangoproject.db'
 DATABASE_USER = ''             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -42,7 +42,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
 )
 
-ROOT_URLCONF = 'exampleproject.urls'
+ROOT_URLCONF = 'djangoproject.urls'
 
 
 INSTALLED_APPS = (
@@ -51,7 +51,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.admin',
     'django.contrib.sites',
-    'exampleproject.exampleapp',
+    'djangoproject.exampleapp',
 )
 
 TEMPLATE_LOADERS = (
