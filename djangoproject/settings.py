@@ -1,5 +1,19 @@
-
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import logging
 import os
+import posix
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
+# logging.basicConfig(
+#     level = logging.DEBUG,
+#     format = '%(asctime)s %(levelname)s %(message)s',
+#     filename = '/tmp/djangoproject.log',
+#     filemode = 'w'
+# )
+
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__), '/')
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -14,9 +28,21 @@ DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Stockholm'
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'sv-SE'
+LANGUAGE_CODE = 'en-US'
+
+ugettext = lambda s: s
+LANGUAGES = (
+    ('en', ugettext('English')),
+    ('sv', ugettext('Swedish')),
+)
+
+# If you set this to False, Django will make some optimizations so as not
+# to load the internationalization machinery.
+USE_I18N = True
+
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
@@ -33,25 +59,31 @@ MEDIA_URL = '/media/'
 ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Don't share this with anybody.
-SECRET_KEY = ')ekb5kx)uv@)$py$$2^d&$_54#o9%y_zb#*mrdg_vxzq)3#s9k'
+SECRET_KEY = 'ChangeThisKeyToSomethingCompletelyDifferent'
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'djangoflash.middleware.FlashMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
     'django.middleware.doc.XViewMiddleware',
 )
 
 ROOT_URLCONF = 'djangoproject.urls'
 
-
 INSTALLED_APPS = (
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.admin',
     'django.contrib.sites',
     'djangoproject.exampleapp',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = TEMPLATE_CONTEXT_PROCESSORS + (
+  'djangoflash.context_processors.flash',
 )
 
 TEMPLATE_LOADERS = (
@@ -60,9 +92,18 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(__file__), "exampleapp/fixtures"),
     os.path.join(os.path.dirname(__file__), "templates"),
 )
 
 SITE_ID = 1
 
+DEFAULT_FROM_EMAIL = "your_email@domain.com"
+SERVER_EMAIL = "your_email@domain.com"
+EMAIL_SUBJECT_PREFIX = "Django: "
 
+# The below LOGIN_URL and LOGOUT_URL doesn't seem to be used except
+# when unit testing views.
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_URL = '/logout/'
