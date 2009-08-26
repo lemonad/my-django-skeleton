@@ -2,6 +2,14 @@ A skeleton setup for starting a django project with virtualenv and buildout.
 
 Instructions:
 
+# Clone git project
+# Setup virtualenv:
+
+  $ virtualenv --no-site-packages [directory]
+  $ source [directory]/bin/activate
+
+  (virtualenv-2.5 or virtualenv2.6 if using macports)
+
 # Edit buildout.cfg and replace "djangoproject" with the name of your project.
 # Replace all occurrences of "djangoproject" with the name of your project
   inside the directory "djangoproject".
@@ -17,6 +25,8 @@ Instructions:
 # Due to dependency issues I haven't been able to fix, delete the following:
 
   $ rm ./eggs/Django-1.1-py2.5.egg
+
+
 
 ---
 
