@@ -1,5 +1,25 @@
 A skeleton setup for starting a django project with virtualenv and buildout.
 
+Instructions:
+
+# Edit buildout.cfg and replace "djangoproject" with the name of your project.
+# Replace all occurrences of "djangoproject" with the name of your project
+  inside the directory "djangoproject".
+# Rename the directory "djangoproject" with the name of your project.
+# Run bootstrap to fetch buildout:
+
+  $ python bootstrap.py
+
+# Run buildout to fetch everything defined in buildout.cfg:
+
+  $ ./bin/buildout
+
+# Due to dependency issues I haven't been able to fix, delete the following:
+
+  $ rm ./eggs/Django-1.1-py2.5.egg
+
+---
+
 Approximate steps to reproduce this repository:
 
 $ virtualenv2.6 --no-site-packages my-django-skeleton
