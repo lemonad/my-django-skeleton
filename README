@@ -5,8 +5,8 @@ Instructions:
 # Clone git project
 # Setup virtualenv:
 
-  $ virtualenv --no-site-packages [directory]
-  $ source [directory]/bin/activate
+  $ virtualenv --no-site-packages {project directory}
+  $ source {project directory}/bin/activate
 
   (virtualenv-2.5 or virtualenv2.6 if using macports)
 
@@ -26,7 +26,10 @@ Instructions:
 
   $ rm ./eggs/Django-1.1-py2.5.egg
 
+# Create new github project
+# Add github as origin repository:
 
+  $ git remote add origin git@github.com:{github username}/{project name}.git
 
 ---
 
