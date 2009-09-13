@@ -2,11 +2,22 @@ A skeleton setup for starting a django project with virtualenv and buildout.
 
 Instructions:
 
-# Clone git project
+# Clone git project:
+
+  $ git clone git://github.com/lemonad/my-django-skeleton.git
+
+# Archive project:
+
+  $ cd my-django-skeleton
+  $ git archive --prefix={project name}/ HEAD > ../{project name}.tar
+  $ cd ..
+  $ tar xvf {project name}.tar
+
 # Setup virtualenv:
 
-  $ virtualenv --no-site-packages {project directory}
-  $ source {project directory}/bin/activate
+  $ virtualenv --no-site-packages {project name}
+  $ cd {project name}
+  $ source bin/activate
 
   (virtualenv-2.5 or virtualenv2.6 if using macports)
 
@@ -14,6 +25,12 @@ Instructions:
 # Replace all occurrences of "djangoproject" with the name of your project
   inside the directory "djangoproject".
 # Rename the directory "djangoproject" with the name of your project.
+
+# Make it a git project
+
+  $ git init
+  $ git add --all
+
 # Run bootstrap to fetch buildout:
 
   $ python bootstrap.py
@@ -30,40 +47,11 @@ Instructions:
 # Add github as origin repository:
 
   $ git remote add origin git@github.com:{github username}/{project name}.git
+  
+# Push
+
+  $ git push origin master
 
 ---
-
-Approximate steps to reproduce this repository:
-
-$ virtualenv2.6 --no-site-packages my-django-skeleton
-$ cd my-django-skeleton
-$ source ./bin/activate
-$ mkdir -p src/skeleton
-$ touch LICENSE (or create it from http://www.opensource.org/licenses/bsd-license.php)
-$ touch README
-$ touch src/skeleton/__init__.py
-$ cat - > buildout.cfg
-[buildout]
-parts =
-^D
-$ touch setup.py
-$ curl -O http://svn.zope.org/*checkout*/zc.buildout/trunk/bootstrap/bootstrap.py
-$ git init
-$ cat - > .gitignore
-*.pyc
-*.pyo
-.installed.cfg
-.Python
-bin
-develop-eggs
-dist
-downloads
-eggs
-include
-lib
-parts
-src/*.egg-info
-^D
-$ python bootstrap.py
 
 [Based on http://jacobian.org/writing/django-apps-with-buildout/]
